@@ -1,5 +1,9 @@
 {
   "name": "jck-library-extensions",
-  "version": "0.0.1",
-  "dependencies": {}
+  "version": "0.0.2",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "0.0.14"
+  }
 }
