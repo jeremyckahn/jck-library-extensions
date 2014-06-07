@@ -1,0 +1,13 @@
+{
+  "name": "jck-library-extensions",
+  "version": "0.0.1",
+  "descriptions": "A set of extensions for open source libraries",
+  "authors": [
+    "Jeremy Kahn <jeremyckahn@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Jellyvision/js-library-extensions.git"
+  }
+}
+
