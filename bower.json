@@ -1,6 +1,6 @@
 {
   "name": "jck-library-extensions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "descriptions": "A set of extensions for open source libraries",
   "authors": [
     "Jeremy Kahn <jeremyckahn@gmail.com>"
