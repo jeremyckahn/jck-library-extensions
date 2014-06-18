@@ -34,8 +34,11 @@ define([
       '<div class="pane-content"></div>'
     ].join('')
 
-    ,initialize: function (opts) {
-      _.extend(this, opts);
+    /**
+     * @param {Object} opts
+     *   @param {Element} el
+     */
+    ,initialize: function () {
       this.$handle = $(this.HANDLE_TEMPLATE);
       this.$el.wrap($(this.CONTAINER_TEMPLATE));
       this.$el = this.$el.parent();
