@@ -1,0 +1,19 @@
+@import "compass/css3";
+
+.pane {
+  background: rgb(255,255,255);
+  border: solid 1px #000;
+  margin: 20px;
+  position: absolute;
+  @include border-top-radius(3px);
+}
+
+  .pane .pane-handle {
+    background: #1a1a1a;
+    cursor: move;
+    height: 28px;
+  }
+
+  .pane .pane-content {
+    background: #353535;
+  }
