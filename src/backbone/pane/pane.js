@@ -22,15 +22,15 @@ define([
 
     FADE_TOGGLE_SPEED: 200
 
-    ,CONTAINER_TEMPLATE: [
+    ,containerTemplate: [
       '<div class="pane"></div>'
     ].join('')
 
-    ,HANDLE_TEMPLATE: [
+    ,handleTemplate: [
       '<div class="pane-handle"></div>'
     ].join('')
 
-    ,CONTENT_WRAPPER_TEMPLATE: [
+    ,contentWrapperTemplate: [
       '<div class="pane-content"></div>'
     ].join('')
 
@@ -39,11 +39,11 @@ define([
      *   @param {Element} el
      */
     ,initialize: function () {
-      this.$handle = $(this.HANDLE_TEMPLATE);
-      this.$el.wrap($(this.CONTAINER_TEMPLATE));
+      this.$handle = $(this.handleTemplate);
+      this.$el.wrap($(this.containerTemplate));
       this.$el = this.$el.parent();
       this.$el
-        .wrapInner($(this.CONTENT_WRAPPER_TEMPLATE))
+        .wrapInner($(this.contentWrapperTemplate))
         .prepend(this.$handle)
         .css({
           left: $win.width() - this.$el.outerWidth(true)
@@ -52,7 +52,6 @@ define([
           within: this.$el.parent()
           ,handle: '.pane-handle'
         });
-      this.oldSize = this.getSize();
       $win.on('resize', _.bind(this.onResize, this));
     }
 
