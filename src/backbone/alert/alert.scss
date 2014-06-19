@@ -1,0 +1,18 @@
+.alert {
+  background: #a8a8a8;
+  border-radius: 4px;
+  display: none;
+  height: 46px;
+  padding: 4px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 345px;
+}
+
+  .alert p {
+    color: #fff;
+    line-height: 1.2em;
+    margin: 0;
+    text-shadow: #555 0 0 1px;
+  }
