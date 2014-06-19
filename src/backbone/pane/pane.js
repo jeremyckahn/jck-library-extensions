@@ -20,7 +20,7 @@ define([
 
   return Backbone.View.extend({
 
-    FADE_TOGGLE_SPEED: 200
+    fadeToggleSpeed: 200
 
     ,containerTemplate: [
       '<div class="pane"></div>'
@@ -72,7 +72,7 @@ define([
     }
 
     ,toggle: function () {
-      this.$el.fadeToggle(this.FADE_TOGGLE_SPEED);
+      this.$el.fadeToggle(this.fadeToggleSpeed);
     }
 
   });
