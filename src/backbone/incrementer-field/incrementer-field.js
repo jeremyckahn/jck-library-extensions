@@ -85,9 +85,9 @@ define([
       }
     }
 
-    ,tearDown: function () {
+    ,teardown: function () {
       this.freeMousewheel();
-      AutoUpdateTextFieldView.prototype.tearDown.call(this);
+      AutoUpdateTextFieldView.prototype.teardown.call(this);
     }
 
   });

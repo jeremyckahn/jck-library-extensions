@@ -43,7 +43,7 @@ define([
       }
     }
 
-    ,tearDown: function () {
+    ,teardown: function () {
       this.remove();
       _.empty(this);
     }
