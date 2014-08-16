@@ -30,6 +30,8 @@ define([
 
     ,increment: 10
 
+    ,mousewheelIncrement: 1
+
     /**
      * @param {number} tweakAmount
      */
@@ -54,7 +56,7 @@ define([
      */
     ,onMousewheel: function (evt, delta, deltaX, deltaY) {
       evt.preventDefault();
-      this.tweakVal(-deltaY);
+      this.tweakVal(-deltaY * this.mousewheelIncrement);
     }
 
     /** @override */
