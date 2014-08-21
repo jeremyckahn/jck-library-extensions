@@ -36,11 +36,13 @@ define([
      * @param {number} tweakAmount
      */
     ,tweakVal: function (tweakAmount) {
-      /* jshint maxlen: 150 */
+      // Ensure that parsedNumber is not NaN
+      var parsedNumber = parseFloat(this.$el.val()) || 0;
+
+      // jshint maxlen: 150
       // Have to do weird number munging here to prevent IEEE 754 floating
       // point issues:
       // http://stackoverflow.com/questions/8503157/ieee-754-floating-point-arithmetic-rounding-error-in-c-sharp-and-javascript
-      var parsedNumber = parseFloat(this.$el.val());
       var precisionRestrictedNumber = +(
           parsedNumber + tweakAmount).toPrecision(FLOATING_POINT_PRECISION);
       this.$el.val(precisionRestrictedNumber);
