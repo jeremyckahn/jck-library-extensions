@@ -19,7 +19,9 @@ define([
   'use strict';
 
   var $win = $(window);
+  var rNumber = /-?[1234567890.]*/;
   var FLOATING_POINT_PRECISION = 6;
+  var TOKEN_CHUNK = '__TOKEN__';
 
   return AutoUpdateTextFieldView.extend({
 
@@ -37,7 +39,7 @@ define([
      */
     ,tweakVal: function (tweakAmount) {
       // Ensure that parsedNumber is not NaN
-      var parsedNumber = parseFloat(this.$el.val()) || 0;
+      var parsedNumber = parseFloat(this.getNumberValue()) || 0;
 
       // jshint maxlen: 150
       // Have to do weird number munging here to prevent IEEE 754 floating
@@ -45,8 +47,33 @@ define([
       // http://stackoverflow.com/questions/8503157/ieee-754-floating-point-arithmetic-rounding-error-in-c-sharp-and-javascript
       var precisionRestrictedNumber = +(
           parsedNumber + tweakAmount).toPrecision(FLOATING_POINT_PRECISION);
-      this.$el.val(precisionRestrictedNumber);
+      this.setNumberValue(precisionRestrictedNumber);
       this.onValReenter(precisionRestrictedNumber);
+    }
+
+    /**
+     * @return {number}
+     */
+    ,getNumberValue: function () {
+      var rawVal = this.$el.val();
+      var firstNumberString = rawVal.match(rNumber)[0];
+      this.tokenPattern = rawVal.replace(firstNumberString, TOKEN_CHUNK);
+
+      var firstNumber = firstNumberString.length ? +firstNumberString : 0;
+      return firstNumber;
+    }
+
+    /**
+     * @param {number} number
+     */
+    ,setNumberValue: function (number) {
+      var formattedValue;
+
+      formattedValue = this.tokenPattern ?
+        this.tokenPattern.replace(TOKEN_CHUNK, number) :
+        ''+number;
+
+      this.$el.val(formattedValue);
     }
 
     /**
