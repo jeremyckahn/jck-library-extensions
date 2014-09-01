@@ -30,9 +30,25 @@ define([
       ,focus: 'onFocus'
     }, AutoUpdateTextFieldView.prototype.events)
 
+    /**
+     * @type {number}
+     */
     ,increment: 10
 
+    /**
+     * @type {number}
+     */
     ,mousewheelIncrement: 1
+
+    /**
+     * @type {?number}
+     */
+    ,lowerBound: null
+
+    /**
+     * @type {?number}
+     */
+    ,upperBound: null
 
     /**
      * @param {number} tweakAmount
@@ -47,6 +63,17 @@ define([
       // http://stackoverflow.com/questions/8503157/ieee-754-floating-point-arithmetic-rounding-error-in-c-sharp-and-javascript
       var precisionRestrictedNumber = +(
           parsedNumber + tweakAmount).toPrecision(FLOATING_POINT_PRECISION);
+
+      if (typeof this.lowerBound === 'number') {
+        precisionRestrictedNumber =
+          Math.max(precisionRestrictedNumber, this.lowerBound);
+      }
+
+      if (typeof this.upperBound === 'number') {
+        precisionRestrictedNumber =
+          Math.min(precisionRestrictedNumber, this.upperBound);
+      }
+
       this.setNumberValue(precisionRestrictedNumber);
       this.onValReenter(precisionRestrictedNumber);
     }
